@@ -25,6 +25,13 @@ public class Encyclopedia {
     public static void main(String[] args) throws IOException, DictionaryException, ClassNotFoundException {
 
         /*
+        * The following part is to create new dictionary named "dictionary1" and insert new phrase and explanation for it
+        *
+        * NOTE: the second run will throw exception Database already exists. So to test other functions: search, update, delete
+        * you should comment out below code which creating new database with name dictionary1, OR just rename dictionary1 with other name.
+        * If you rename database when create, you have to make sure open correct database when search, update, delete
+        *
+        * */
         Encyclopedia encyclopedia = new Encyclopedia("dictionary1");
 
         Post post = new Post();
@@ -34,11 +41,15 @@ public class Encyclopedia {
                 "In a sequential-access file, you can only read and write information sequentially, " +
                 "starting from the beginning of the file.");
 
-        encyclopedia.insertNewPost(post);*/
+        encyclopedia.insertNewPost(post);
 
 
-        Encyclopedia encyclopedia = new Encyclopedia("dictionary1", "rw");
-        Post searchResult = encyclopedia.searchPhrase("Random File Access");
+        /*
+        * The following part is to open dictionary named "dictionary1" and
+        * after that search a phrase "Random File Access" and print the explanation to console
+        * */
+        Encyclopedia encyclopedia2 = new Encyclopedia("dictionary1", "rw");
+        Post searchResult = encyclopedia2.searchPhrase("Random File Access");
         if(searchResult != null){
             System.out.println(searchResult.getExplanation());
         }
